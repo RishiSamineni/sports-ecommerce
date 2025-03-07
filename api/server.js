@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const path = require('path');
 const app = express();
+const serverless = require("serverless-http");
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname,'public')));
@@ -72,3 +73,12 @@ app.post("/login", async (req, res) => {
 app.listen(PORT, ()=>{
     console.log(`Server running at http://localhost:${PORT}`);
 });
+
+app.get("/api/message", (req, res) => {
+    res.json({ message: "Hello from Vercel backend!" });
+});
+
+module.exports = app;
+module.exports.handler = serverless(app);
+
+
