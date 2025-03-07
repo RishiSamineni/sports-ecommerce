@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameOn</title>
+    <link rel="stylesheet" href="css/landingPage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-x5P3w6O0+qWw6S1P7l7b9Hq+WXHGeFk1az7DxiXeAIG5uwDhH+IhdZKmsl9Vv17MCFtZ" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Parkinsans:wght@300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="header">
+        <a href="index.html"><img src="images/logo.png" class="logo" alt="logo"></a>
+        <div>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html"><img class="shopping-cart" src="images/shopping-cart.png"></a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="page-header about-header">
+        <h2>Cart Page</h2>
+    </section>
+    <section id="cart" class="section-p1">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Remove</td>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
+                </tr>
+            </thead>
+            <tbody id="cart-body">
+                
+            </tbody>
+        </table>
+    </section>
+    <section id="cart-add" class="section-p1">
+        <div id="coupon">
+            <h3>Apply Coupon</h3>
+            <div>
+                <input type="text" placeholder="Enter Your Coupon">
+                <button class="normal">Apply</button>
+            </div>
+        </div>
+        <div id="subtotal">
+            <h3>Cart Totals</h3>
+            <table>
+                <tr>
+                    <td>Cart Subtotals</td>
+                    <td class="subtotal-cost">₹0</td>
+                </tr>
+                <tr>
+                    <td>Shipping</td>
+                    <td>Free</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td class="total-cost"><strong>₹0</strong></td>
+                </tr>
+            </table>
+            <button class="normal">Proceed to Checkout</button>
+        </div>
+    </section>
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="images/logo.png" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> 9-10-31,Raghavendra Residency, Asilimetta, Visakhapatnam,India</p>
+            <p><strong>Phone:</strong>+91 9392787650, +91 7093686727, +91 9963107080</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <img src="images/facebook.png" alt="" wodth="16px" height="16px">
+                    <img src="images/instagram.png" alt="" wodth="16px" height="16px">
+                    <img src="images/social.png" alt="" wodth="16px" height="16px">
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms and Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign in</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlists</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="images/app-store1.png" alt="">
+                <img src="images/app1.png" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="images/UPI-Logo.png" alt="" width="50px" height="50px">
+            <img src="images/razor-pay.png" alt="" width="50px" height="50px">  
+            <img src="images/visa.png" alt="" width="50px" height="50px">
+            <img src="images/net-banking.jpg" alt="" width="50px" height="50px">
+            <img src="images/pay-pal.png" alt="" width="50px" height="50px">
+        </div>
+        <div class="copyright">
+            <p>©Copyrights,Sravan,Vamsi,Rishi Samineni,2025</p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let cartTable = document.getElementById("cart-body");
+            let subtotal = 0;
+            cartTable.innerHTML = "";
+            cart.forEach((item, index) => {
+                let row = `
+                    <tr>
+                        <td><button onclick="removeItem(${index})"><img src="images/remove.png"></button></td>
+                        <td><img src="${item.image}" width="50"></td>
+                        <td>${item.title}</td>
+                        <td class="item-price">${item.price}</td>
+                        <td><input type="number" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)"></td>
+                        <td class="item-total">₹${(parseFloat(item.price.replace('₹', '')) * item.quantity).toFixed(2)}</td>
+                    </tr>
+                `;
+                cartTable.innerHTML += row;
+                subtotal += parseFloat(item.price.replace('₹', '')) * item.quantity;
+            });
+            document.querySelector(".subtotal-cost").textContent = `₹${subtotal.toFixed(2)}`;
+            document.querySelector(".total-cost").textContent = `₹${subtotal.toFixed(2)}`;
+        }
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
+        function updateQuantity(index, newQuantity) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (newQuantity < 1) return;
+            cart[index].quantity = parseInt(newQuantity);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
+        document.addEventListener("DOMContentLoaded", loadCart);
+    </script>
+</body>
+</html>
