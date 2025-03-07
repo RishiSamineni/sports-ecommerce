@@ -5,34 +5,43 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const path = require('path');
+const serverless = require("serverless-http"); // ✅ Fix: Import serverless
 const app = express();
-const serverless = require("serverless-http");
+
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname,'public')));
+// Middleware
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(cors());
-app.get('/', (req, res)=>{
+
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-require("dotenv").config();
+// Check for JWT_SECRET
 const JWT_SECRET = process.env.JWT_SECRET;
 if (!JWT_SECRET) {
     throw new Error("Missing JWT_SECRET in environment variables");
 }
 
-
-mongoose.connect(process.env.MONGO_URI)
+// ✅ Fix: Handle MongoDB Connection Properly
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
     .then(() => console.log("✅ MongoDB connected successfully"))
-    .catch(err => console.error("❌ MongoDB connection error:", err));
+    .catch(err => {
+        console.error("❌ MongoDB connection error:", err);
+        process.exit(1); // Exit if MongoDB fails
+    });
 
+// User Schema
 const UserSchema = new mongoose.Schema({
     username: String,
     email: { type: String, unique: true },
     password: String
 });
-
 const User = mongoose.model("User", UserSchema);
 
 // Signup Route
@@ -57,28 +66,38 @@ app.post("/signup", async (req, res) => {
 
 // Login Route
 app.post("/login", async (req, res) => {
-    const {email, password} = req.body;
+    try {
+        const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ msg: "User not found"});
+        const user = await User.findOne({ email });
+        if (!user) return res.status(400).json({ msg: "User not found" });
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({msg: "Invalid credentials"});
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
 
-    const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: "1h" });
 
-    res.json({ token, user: { id: user._id, username: user.username, email: user.email } });
+        res.json({ token, user: { id: user._id, username: user.username, email: user.email } });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
-app.listen(PORT, ()=>{
-    console.log(`Server running at http://localhost:${PORT}`);
-});
-
+// API Route for Testing
 app.get("/api/message", (req, res) => {
     res.json({ message: "Hello from Vercel backend!" });
 });
 
+// Start Express Server (Only for Local Development)
+if (process.env.NODE_ENV !== "production") {
+    app.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}`);
+    });
+}
+
+// ✅ Fix: Correctly Export for Vercel
 module.exports = app;
 module.exports.handler = serverless(app);
+
 
 
