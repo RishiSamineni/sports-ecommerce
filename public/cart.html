@@ -131,7 +131,7 @@
             cart.forEach((item, index) => {
                 let row = `
                     <tr>
-                        <td><button onclick="removeItem(${index})"><img src="images/remove.png"></button></td>
+                        <td><button onclick="removeItem(${index})" class="white" id="delete"><img src="images/remove.png"></button></td>
                         <td><img src="${item.image}" width="50"></td>
                         <td>${item.title}</td>
                         <td class="item-price">${item.price}</td>

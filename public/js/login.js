@@ -25,8 +25,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     }
     e.preventDefault();
 
-    backendUrl = "https://sports-e-commerce.vercel.app/";
-    const res = await fetch(`${backendUrl}/login`, {
+    const res = await fetch("http://localhost:3000/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })

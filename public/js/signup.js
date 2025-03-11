@@ -32,9 +32,7 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
         e.preventDefault();
     }
     e.preventDefault();
-
-    backendUrl = "https://sports-e-commerce.vercel.app/";
-    const res = await fetch(`${backendUrl}/signup`, {
+    const res = await fetch("http://localhost:3000/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password })
