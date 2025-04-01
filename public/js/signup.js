@@ -9,6 +9,8 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
     document.getElementById('emailError').textContent = '';
     document.getElementById('passwordError').textContent = '';
 
+
+    
     // Validate username
     if (!username) {
         document.getElementById('usernameError').textContent = 'Username is required.';
