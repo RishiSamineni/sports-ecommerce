@@ -26,8 +26,8 @@ if (!JWT_SECRET) {
 mongoose.connect(process.env.MONGO_URI, {
     serverSelectionTimeoutMS: 10000, // 10 seconds timeout
 })
-    .then(() => console.log("✅ MongoDB connected successfully"))
-    .catch(err => console.error("❌ MongoDB connection error:", err));
+    .then(() => console.log("MongoDB connected successfully"))
+    .catch(err => console.error("MongoDB connection error:", err));
 
 
 const UserSchema = new mongoose.Schema({
@@ -80,3 +80,20 @@ app.post("/login", async (req, res) => {
 app.listen(PORT, ()=>{
     console.log(`Server running at http://localhost:${PORT}`);
 });
+
+
+const cartSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    items: [
+        {
+            productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product", required: true },
+            title: String,
+            price: Number,
+            image: String,
+            quantity: { type: Number, default: 1 }
+        }
+    ]
+});
+
+module.exports = mongoose.model("Cart", cartSchema);
+
